@@ -3,7 +3,7 @@
 # Script to build platform, secure, secure transition and webadmin
 # Author: Praveen Chamarthi
 # Date: July 2014
-# SVN Path: svn+ssh://svn.netmail.com/netmail/trunk/platform/HudsonBuild
+# SVN Path: svn+ssh://svn.myserver.com/netmail/trunk/platform/HudsonBuild
 #-----------------------------------------------------------------------
 
 if [ "$#" -lt 1 ]; then
@@ -23,8 +23,8 @@ if [ "$2" == "all" ]; then
 fi
 
 #A few VARIABLES
-typeset svn_root=svn+ssh://svn.netmail.com/netmail
-typeset svn_tag_root=svn+ssh://svn.netmail.com/netmail/tags/Iberville
+typeset svn_root=svn+ssh://svn.myserver.com/netmail
+typeset svn_tag_root=svn+ssh://svn.myserver.com/netmail/tags/Iberville
 typeset prod_version=5.3.1.$build_number
 typeset home_root=/home/debug/nms-iberville
 typeset build_root=$home_root/build

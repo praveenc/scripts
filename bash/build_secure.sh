@@ -2,7 +2,7 @@
 # Script to build (DEBUG, RElEASE) Secure GlenValley code
 
 home_root=/home/debug/nms-ftfs/530_155320
-svn_root=svn+ssh://svn.netmail.com/netmail/branches/support/secure_ftfs/5.3.0.155320
+svn_root=svn+ssh://svn.myserver.com/netmail/branches/support/secure_ftfs/5.3.0.155320
 
 file_drop=/mnt/buildmachine/Netmail_GlenValley/RPMs/secure
 file_prefix="NETMAIL-5.3.0"
