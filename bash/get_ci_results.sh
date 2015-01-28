@@ -1,6 +1,6 @@
 #!/bin/bash
 
-typeset root_dir=/home/debug/svn/netmail-automation
+typeset root_dir=/home/debug/svn/-automation
 typeset testcase_dir=$root_dir/testcases
 typeset data_dir=/home/debug/ci_data
 typeset report=$testcase_dir/report.log
@@ -32,7 +32,7 @@ if [ ! -d "$data_dir" ]; then
    `mkdir $data_dir`
 fi
 
-typeset rev_no=`egrep 'CPack\:.*generated' $suite | sed 's/.*NETMAIL-//g' | sed 's/_debug.*//g'`
+typeset rev_no=`egrep 'CPack\:.*generated' $suite | sed 's/.*-//g' | sed 's/_debug.*//g'`
 typeset total=`egrep '(OK|FAIL|ERROR|CORE)' $report | wc -l`
 typeset ok_cnt=`egrep '(OK)' $report | wc -l`
 typeset fail_cnt=`egrep '(FAIL)' $report | wc -l`

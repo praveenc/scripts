@@ -3,7 +3,7 @@
 # Script to build platform, secure, secure transition and webadmin
 # Author: Praveen Chamarthi
 # Date: July 2014
-# SVN Path: svn+ssh://svn.myserver.com/netmail/trunk/platform/HudsonBuild
+# SVN Path: svn+ssh://svn.myserver.com/trunk/platform/HudsonBuild
 #-----------------------------------------------------------------------
 
 if [ "$#" -lt 1 ]; then
@@ -23,12 +23,12 @@ if [ "$2" == "all" ]; then
 fi
 
 #A few VARIABLES
-typeset svn_root=svn+ssh://svn.myserver.com/netmail
-typeset svn_tag_root=svn+ssh://svn.myserver.com/netmail/tags/Iberville
+typeset svn_root=svn+ssh://svn.myserver.com/
+typeset svn_tag_root=svn+ssh://svn.myserver.com/tags/Iberville
 typeset prod_version=5.3.1.$build_number
 typeset home_root=/home/debug/nms-iberville
 typeset build_root=$home_root/build
-typeset rpm_share=/mnt/buildmachine/Netmail_trunk/${prod_version}/
+typeset rpm_share=/mnt/buildmachine/_trunk/${prod_version}/
 typeset workspace=/mnt/build_workspace
 
 #echo "Building Version: ${prod_version} "
@@ -92,8 +92,8 @@ cd $build_root/platform
 # Configure CMake with default (DEBUG) params
 cmake	-D CMAKE_BUILD_TYPE=debug			\
 	-D ASSERT_TYPE=crash				\
-	-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-	-D DATA_DIR=/opt/ma/data/netmail		\
+	-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+	-D DATA_DIR=/opt/ma/data/		\
 	-D REV_TYPE=${build_number}			\
 	../../platform || exit $?
 
@@ -110,8 +110,8 @@ if [ "$release" == "RELEASE" ]; then
 	# Configure CMake with default (RELEASE) params
 	cmake	-D CMAKE_BUILD_TYPE=release			\
 		-D ASSERT_TYPE=print				\
-		-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-		-D DATA_DIR=/opt/ma/data/netmail		\
+		-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+		-D DATA_DIR=/opt/ma/data/		\
 		-D REV_TYPE=${build_number}			\
 		../../platform || exit $?
 
@@ -126,7 +126,7 @@ echo "Creating directory for RPMs under $rpm_share"
 sudo mkdir -p $rpm_share/RPMs
 
 #Copy RPM to Share folder on Archive Build Machine
-# Share Folder: \\10.10.23.159\Builds\Netmail_trunk\RPMs folder
+# Share Folder: \\10.10.23.159\Builds\_trunk\RPMs folder
 echo "copying platform rpm to $rpm_share ..."
 find $build_root/platform -maxdepth 1 -iname \*.rpm -exec sudo cp "{}" $rpm_share/RPMs \;
 
@@ -137,8 +137,8 @@ cd $build_root/secure
 
 cmake	-D CMAKE_BUILD_TYPE=debug			\
 	-D ASSERT_TYPE=crash				\
-	-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-	-D DATA_DIR=/opt/ma/data/netmail		\
+	-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+	-D DATA_DIR=/opt/ma/data/		\
 	-D REV_TYPE=${build_number}			\
 	../../secure || exit $?
 
@@ -154,8 +154,8 @@ if [ "$release" == "RELEASE" ]; then
 
 	cmake	-D CMAKE_BUILD_TYPE=release			\
 		-D ASSERT_TYPE=print				\
-		-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-		-D DATA_DIR=/opt/ma/data/netmail		\
+		-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+		-D DATA_DIR=/opt/ma/data/		\
 		-D REV_TYPE=${build_number}			\
 		../../secure || exit $?
 
@@ -172,8 +172,8 @@ cd $build_root/secure-transition
 
 cmake	-D CMAKE_BUILD_TYPE=debug			\
 	-D ASSERT_TYPE=crash				\
-	-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-	-D DATA_DIR=/opt/ma/data/netmail		\
+	-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+	-D DATA_DIR=/opt/ma/data/		\
 	-D REV_TYPE=${build_number}			\
 	../../secure-transition || exit $?
 
@@ -189,8 +189,8 @@ if [ "$release" == "RELEASE" ]; then
 
 	cmake	-D CMAKE_BUILD_TYPE=release			\
 		-D ASSERT_TYPE=print				\
-		-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-		-D DATA_DIR=/opt/ma/data/netmail		\
+		-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+		-D DATA_DIR=/opt/ma/data/		\
 		-D REV_TYPE=${build_number}			\
 		../../secure-transition || exit $?
 
@@ -213,8 +213,8 @@ cd $build_root/webadmin
 
 cmake	-D CMAKE_BUILD_TYPE=debug			\
 	-D ASSERT_TYPE=crash				\
-	-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-	-D DATA_DIR=/opt/ma/data/netmail		\
+	-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+	-D DATA_DIR=/opt/ma/data/		\
 	-D REV_TYPE=${build_number}			\
 	../../webadmin || exit $?
 
@@ -230,8 +230,8 @@ if [ "$release" == "RELEASE" ]; then
 
 	cmake	-D CMAKE_BUILD_TYPE=release			\
 		-D ASSERT_TYPE=print				\
-		-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-		-D DATA_DIR=/opt/ma/data/netmail		\
+		-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+		-D DATA_DIR=/opt/ma/data/		\
 		-D REV_TYPE=${build_number}			\
 		../../webadmin || exit $?
 
@@ -251,8 +251,8 @@ cd $build_root/testtools
 # Configure CMake with default (DEBUG) params
 cmake	-D CMAKE_BUILD_TYPE=debug			\
 	-D ASSERT_TYPE=crash				\
-	-D CMAKE_INSTALL_PREFIX=/opt/ma/netmail		\
-	-D DATA_DIR=/opt/ma/data/netmail		\
+	-D CMAKE_INSTALL_PREFIX=/opt/ma	\
+	-D DATA_DIR=/opt/ma/data/		\
 	-D REV_TYPE=${build_number}			\
 	-D PLATFORM_BINARY_DIR=$build_root/platform \
 	../../testtools || exit 0

@@ -2,10 +2,10 @@
 # Script to build (DEBUG, RElEASE) Secure GlenValley code
 
 home_root=/home/debug/nms-ftfs/530_155320
-svn_root=svn+ssh://svn.myserver.com/netmail/branches/support/secure_ftfs/5.3.0.155320
+svn_root=svn+ssh://svn.myserver.com//branches/support/secure_ftfs/5.3.0.155320
 
-file_drop=/mnt/buildmachine/Netmail_GlenValley/RPMs/secure
-file_prefix="NETMAIL-5.3.0"
+file_drop=/mnt/buildmachine/_GlenValley/RPMs/secure
+file_prefix="-5.3.0"
 
 mkdir -p "${file_drop}"
 
@@ -35,7 +35,7 @@ last_rev=`svn info | grep 'Revision:' | sed 's/Revision: //'`
 echo "  Building Revision $last_rev RELEASE package ..."
 cmake  -D CMAKE_BUILD_TYPE=release                     \
 -D ASSERT_TYPE=print                            \
--D CMAKE_INSTALL_PREFIX=/opt/ma/netmail         \
+-D CMAKE_INSTALL_PREFIX=/opt/ma/         \
 -D WITH_OOO=ON                                  \
 -D WITH_SNMP=ON                                 \
 . || exit $?
@@ -47,7 +47,7 @@ mkdir -p $home_root/rpm-secure
 echo "  Building Revision $last_rev DEBUG package ..."
 cmake   -D CMAKE_BUILD_TYPE=debug                       \
 -D ASSERT_TYPE=crash                            \
--D CMAKE_INSTALL_PREFIX=/opt/ma/netmail         \
+-D CMAKE_INSTALL_PREFIX=/opt/ma/         \
 -D WITH_OOO=ON                                  \
 -D WITH_SNMP=ON                                 \
 . || exit $?

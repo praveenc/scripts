@@ -22,10 +22,10 @@ else
 	echo -e "
 	\n--- New Files Found in this build --\n
 	If they need to be added to InstallShield then update warp_versions.bat here\n
-	netmail/trunk/platform/HudsonBuild/verpatch/warp_versions.bat
+	myserver/trunk/platform/HudsonBuild/verpatch/warp_versions.bat
 	\n\n
 	If they should be ignored by InstallShield then update to_ignore_from_install_shield.txt here\n
-	netmail/trunk/platform/HudsonBuild/to_ignore_from_install_shield.txt\n
+	myserver/trunk/platform/HudsonBuild/to_ignore_from_install_shield.txt\n
 	------------------------------------
 	"
 	echo "*** BUILD ABORTED ****"
