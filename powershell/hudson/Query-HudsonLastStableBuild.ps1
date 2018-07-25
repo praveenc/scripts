@@ -1,4 +1,4 @@
-﻿$netmailtrunk_uri = "http://10.10.23.159:8070/job/Netmail_trunk/"
+﻿$netmailtrunk_uri = "http://10.10.23.159:8070/job/{job_name}/"
 
 
 $content = Invoke-WebRequest -Uri $netmailtrunk_uri
