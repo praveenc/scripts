@@ -17,7 +17,7 @@
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
         [ValidateScript({-not ([String]::IsNullOrEmpty($_))})]
-        [ValidateSet("Netmail_Trunk","Netmail_GlenValley","5_3_1_BETA3")]
+        [ValidateSet("{jobname_1}","{jobname_2}","{jobname_3}")]
         [String]$HudsonJobName,
 
         # HudsonServerURI
@@ -38,7 +38,7 @@
     
     $ErrorActionPreference = 'Stop'
     $hostname = $env:COMPUTERNAME
-    $BuildFolderPath = "\\10.10.23.159\Builds\$HudsonJobName"
+    $BuildFolderPath = "\\{fileserver_ip}\Builds\$HudsonJobName"
     $build_prefix = "5.3."
 
     if(-Not (Test-Path .\Fast-Delete.ps1))
@@ -59,9 +59,9 @@
     }
 
     # Can only be run from Praveen's machine.
-    if($hostname -ne "OSIRIS" )
+    if($hostname -ne "{ADMIN_HOSTNAME}" )
     {
-        Write-Output "*** This script can be run only on Praveens Machine 10.10.3.238. Exiting..."
+        Write-Output "*** This script can be run only on Admins Machine. Exiting..."
         exit 1
     }    
 
