@@ -1,15 +1,15 @@
 $ErrorActionPreference = 'Stop'
 $hostname = $env:COMPUTERNAME
-$hudson_jobname = "Netmail_trunk"
-$buildfolder_root = "\\10.10.23.159\Builds\$hudson_jobname"
+$hudson_jobname = "{job_name}"
+$buildfolder_root = "\\{fileserve_ip}\Builds\$hudson_jobname"
 if($hostname -ne "OSIRIS" ){#
 
-    Write-Output "*** This script can be run only on Praveens Machine 10.10.4.160. Exiting..."
+    Write-Output "*** This script can be run only on Admins Machine. Exiting..."
     exit 1
 }    
 
-#$failedbuilds_uri = "http://10.10.23.159:8070/rssFailed"
-$allbuilds_rss = "http://10.10.23.159:8070/job/Netmail_trunk/rssAll"
+#$failedbuilds_uri = "http://jenkinsurl/rssFailed"
+$allbuilds_rss = "http://{jenkinsip}:{port}/job/{job_name}/rssAll"
 $releasenumber = "5.3.0"
 [Array]$failedbuild_folders = @()
 [Array]$stablebuild_folders = @()
@@ -66,9 +66,9 @@ $stablebuild_folders| % {
     }
 }
 
-$smtpserver = "10.200.1.80"
+$smtpserver = "xxxxxxx"
 $from = "Janitor@BuildMachine.com"
-$to = "praveenc@netmail.com"
+$to = "praveenc@xxxxx.com"
 $Subject = "Netmail_Trunk Builds = Folder Cleanup"
 if($deleted){
     #$Subject = "Netmail_Trunk Build Folders"
